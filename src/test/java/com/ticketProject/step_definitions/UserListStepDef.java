@@ -4,6 +4,7 @@ import com.ticketProject.pages.AdministrationPage;
 import com.ticketProject.pages.BasePage;
 import com.ticketProject.pages.LoginPage;
 import com.ticketProject.utilities.BrowserUtils;
+import com.ticketProject.utilities.ConfigurationReader;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -195,16 +196,22 @@ public class UserListStepDef {
 
     }
 
-    @Given("user logged in")
+    @When("user logged in")
     public void userLoggedIn() {
 
-     loginPage.login.click();
+        loginPage.login.click();
     }
 
 
     @And("user navigates to Administration")
     public void userNavigatesToAdministration() {
         administrationPage.administrationTab.click();
+
+    }
+
+    @Given("the user on login page")
+    public void theUserOnLoginPage() {
+        Driver.get().get(ConfigurationReader.get("url"));
 
     }
 }
